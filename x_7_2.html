@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cake Order</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            background: pink;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        select, input {
+            padding: 8px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+            background: deeppink;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Cake Order</h2>
+        <label>Select Cake Size:</label><br>
+        <select id="size">
+            <option value="500">Small - ₹500</option>
+            <option value="1000">Medium - ₹1000</option>
+            <option value="1500">Large - ₹1500</option>
+        </select>
+        <br>
+        <label>Select Flavour:</label><br>
+        <select id="flavour">
+            <option value="100">Chocolate - ₹100</option>
+            <option value="150">Vanilla - ₹150</option>
+            <option value="200">Strawberry - ₹200</option>
+        </select>
+        <br>
+        <label>Quantity:</label><br>
+        <input type="number" id="quantity" value="1" min="1">
+        <br>
+        <button id="calculate">Calculate Price</button>
+
+        <h3>Total Price: ₹<span id="total">0</span></h3>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#calculate").click(function() {
+                var size = Number($("#size").val());
+                var flavour = Number($("#flavour").val());
+                var quantity = Number($("#quantity").val());
+
+                if (quantity <= 0 || !Number.isInteger(quantity)) {
+                    alert("Enter a valid quantity!");
+                }
+                else {
+                    var total = (size + flavour) * quantity;
+
+                    $("#total").text(total);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

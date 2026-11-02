@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Body Workshop</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightblue;
+        }
+        .box {
+            background: white;
+            width: 450px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #car {
+            margin: 50px auto;
+            position: relative;
+            width: 300px;
+            height: 100px;
+        }
+        #body {
+            background: red;
+            width: 280px;
+            height: 55px;
+            position: absolute;
+            bottom: 15px;
+            left: 10px;
+            border-radius: 30px 50px 10px 10px;
+        }
+        .glass {
+            background: lightblue;
+            width: 65px;
+            height: 35px;
+            position: absolute;
+            top: 5px;
+            left: 120px;
+            border-radius: 20px 25px 0 0;
+        }
+        .wheel {
+            background: black;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+        }
+        #w1 {
+            left: 45px;
+        }
+        #w2 {
+            right: 45px;
+        }
+        select {
+            padding: 8px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Car Body Workshop</h2>
+        <div id="car">
+            <div id="body"></div>
+            <div class="glass"></div>
+            <div class="wheel" id="w1"></div>
+            <div class="wheel" id="w2"></div>
+        </div>
+        <h3>Change Car Colour</h3>
+        <select id="color">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="black">Black</option>
+        </select>
+        <h3>Change Glass Tint</h3>
+        <select id="tint">
+            <option value="lightblue">Light Blue</option>
+            <option value="gray">Gray</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+        </select>
+        <h3>Change Tyre Size</h3>
+        <select id="tyre">
+            <option value="35px">Small</option>
+            <option value="45px">Medium</option>
+            <option value="60px">Large</option>
+        </select>
+    </div>
+    <script>
+        $(document).ready(function() {
+            // Change car body colour
+            $("#color").change(function() {
+                var color = $(this).val();
+                $("#body").css("background-color", color);
+            });
+            // Change glass tint
+            $("#tint").change(function() {
+                var tint = $(this).val();
+
+                $(".glass").css("background-color", tint);
+            });
+            // Change tyre size
+            $("#tyre").change(function() {
+                var size = $(this).val();
+                $(".wheel").css({
+                    "width": size,
+                    "height": size
+                });
+            });
+        });
+    </script>
+</body>
+</html>
